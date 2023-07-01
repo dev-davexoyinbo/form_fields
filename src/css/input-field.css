@@ -32,14 +32,61 @@ body {
     line-height: 1.5;
 }
 
+.input-label + .input-container {
+    margin-top: 0.25rem;
+}
+
 .input-description {
     font-size: 14px;
     line-height: 1.4;
+}
+
+.input-description + .input-container {
+    margin-top: 0.25rem;
 }
 
 .input-subtext {
     font-size: 14px;
     line-height: 1.4;
     color: var(--input-secondary-color);
+    margin-top: 0.25rem;
 }
 
+/* Input container */
+.input-container {
+    height: 40px;
+    background: var(--input-background-color);
+    display: flex;
+    border-radius: 6px;
+    max-width: 400px;
+    border: 1px solid transparent;
+}
+
+.input-container:focus-within {
+    border-color: var(--input-secondary-color);
+}
+
+/* Input elements */
+.input-container > .input-element {
+    height: 100%;
+    flex: 1 1 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    caret-color: var(--input-secondary-color);
+    color: white;
+}
+
+.input-container > .input-element:first-child {
+    padding-left: 14px;
+    cursor: pointer;
+}
+
+.input-container > .input-element:last-child {
+    padding-right: 14px;
+}
+
+.input-container > .input-element::placeholder {
+    color: var(--input-secondary-color);
+}
