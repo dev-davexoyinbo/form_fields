@@ -17,6 +17,7 @@ html {
     --input-secondary-color: #B6BFF3;
     --input-background-color: #41455D;
     --input-success-color: #18C18E;
+    --input-highlight-color: var(--input-secondary-color);
 }
 
 body {
@@ -48,7 +49,7 @@ body {
 .input-subtext {
     font-size: 14px;
     line-height: 1.4;
-    color: var(--input-secondary-color);
+    color: var(--input-highlight-color);
     margin-top: 0.25rem;
 }
 
@@ -68,7 +69,23 @@ body {
 }
 
 .input-container:focus-within {
-    border-color: var(--input-secondary-color);
+    border-color: var(--input-highlight-color);
+}
+
+/* With action */
+.input-container.input-error,
+.input-container.input-success {
+    border-color: var(--input-highlight-color);
+}
+
+/* Error input */
+.input-container.input-error, .input-container.input-error + .input-subtext {
+    --input-highlight-color: var(--input-error-color);
+}
+
+/* Success input */
+.input-container.input-success, .input-container.input-success + .input-subtext {
+    --input-highlight-color: var(--input-success-color);
 }
 
 /* Input elements */
@@ -79,11 +96,11 @@ body {
     outline: none;
     border: none;
     font-size: 14px;
-    caret-color: var(--input-secondary-color);
+    caret-color: var(--input-highlight-color);
     color: white;
     cursor: pointer;
 }
 
 .input-container > .input-element::placeholder {
-    color: var(--input-secondary-color);
+    color: var(--input-highlight-color);
 }
