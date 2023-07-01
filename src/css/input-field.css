@@ -2,7 +2,6 @@
 
 html {
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
     font-size: 16px;
 }
 
@@ -11,3 +10,36 @@ html {
     margin: 0;
     padding: 0;
 }
+
+:root {
+    --body-background: #292C3A;
+    --input-error-color: #ff8585;
+    --input-secondary-color: #B6BFF3;
+    --input-background-color: #41455D;
+    --input-success-color: #18C18E;
+}
+
+body {
+    background: var(--body-background);
+    color: white;
+    padding: 3rem;
+}
+
+/* Input texts */
+.input-label {
+    font-weight: 500px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.input-description {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.input-subtext {
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--input-secondary-color);
+}
+
