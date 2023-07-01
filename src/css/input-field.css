@@ -60,6 +60,11 @@ body {
     border-radius: 6px;
     max-width: 400px;
     border: 1px solid transparent;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 0 12px;
+    color: var(--input-secondary-color);
 }
 
 .input-container:focus-within {
@@ -76,15 +81,7 @@ body {
     font-size: 14px;
     caret-color: var(--input-secondary-color);
     color: white;
-}
-
-.input-container > .input-element:first-child {
-    padding-left: 14px;
     cursor: pointer;
-}
-
-.input-container > .input-element:last-child {
-    padding-right: 14px;
 }
 
 .input-container > .input-element::placeholder {
