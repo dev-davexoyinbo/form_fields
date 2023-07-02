@@ -104,3 +104,10 @@ body {
 .input-container > .input-element::placeholder {
     color: var(--input-highlight-color);
 }
+
+/* Disabled */
+.input-container.input-disabled,
+.input-container.input-disabled * {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
