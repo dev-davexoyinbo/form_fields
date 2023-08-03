@@ -31,8 +31,8 @@ selectContainers.forEach(container => {
                     option.setAttribute("tabindex", "-1")
                 })
                 container.classList.remove("opened")
-                
-                if(openContainer == container) openContainer = null
+
+                if (openContainer == container) openContainer = null
             }
 
             positionDropdownWithinDropdown(container)
@@ -56,11 +56,11 @@ selectContainers.forEach(container => {
 
 
                 selectOptions.forEach(el => {
-                    if(el.getAttribute("value") == String(target.value)) option = el;
-                    if(el.getAttribute("value") == String(prevValue)) prevOption = el;
+                    if (el.getAttribute("value") == String(target.value)) option = el;
+                    if (el.getAttribute("value") == String(prevValue)) prevOption = el;
                 });
 
-                if(prevOption) {
+                if (prevOption) {
                     prevOption.classList.remove("selected")
                 }
 
@@ -88,24 +88,28 @@ selectContainers.forEach(container => {
             valueProxy.value = option.getAttribute("value") || "";
             isOpenedProxy.value = false
         })
-    })
-
-    window.addEventListener("click", event => {
-        if (!isOpenedProxy.value) return;
-
-        const path = event.composedPath();
-        if (path.some(el => el == container)) return;
-        isOpenedProxy.value = false;
-    }, {
-        passive: true,
-        capture: true,
     });
+
+    container.addEventListener("triggerclose", (event) => {
+        isOpenedProxy.value = false;
+    });
+    
     positionDropdownWithinDropdown(container)
 });
 
+window.addEventListener("click", event => {
+    const path = event.composedPath();
+    if(path.some(el => el instanceof Element && el.matches(".select-container.opened"))) return;
+    const containers = Array.from(document.querySelectorAll(".select-container.opened"))
+    containers.forEach(container => container.dispatchEvent(new Event("triggerclose")))
+}, {
+    passive: true,
+    capture: true,
+});
+
 window.addEventListener("scroll", () => {
-    if(openContainer) positionDropdownWithinDropdown(openContainer)
-})
+    if (openContainer) positionDropdownWithinDropdown(openContainer)
+}, { passive: true })
 
 function positionDropdownWithinDropdown(container) {
     const selectDropdown = container.querySelector(":scope > .select-dropdown");
