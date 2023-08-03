@@ -111,3 +111,83 @@ body {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+
+/* *************************** */
+/* Select elements */
+.input-element.select-element {
+    --caret-width: 1.5em;
+    position: relative;
+    padding-right: calc(4px + var(--caret-width));
+    text-align: left;
+}
+.input-element.select-element::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: var(--input-highlight-color);
+    -webkit-mask-image: url("../images/caretdown.svg");
+    mask-image: url("../images/caretdown.svg");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: right center;
+    mask-position: right center;
+    -webkit-mask-size: var(--caret-width) auto;
+    mask-size: var(--caret-width) auto;
+    width: var(--caret-width);
+    height: 100%;
+}
+
+.select-element-input:placeholder-shown + .select-element {
+    color: var(--input-secondary-color);
+}
+
+.select-element + .select-dropdown {
+    height: 500px;
+    width: 400px;
+    position: absolute;
+    left: 1rem;
+    top: 10rem;
+    background: var(--input-background-color);
+    border-radius: 6px;
+    padding: 8px;
+    box-shadow: 1px 1px 6px rgb(26 26 26 / 21%);
+    overflow-y: auto;
+}
+
+.select-option {
+    color: white;
+    background: transparent;
+    border: 1px solid transparent;
+    outline: none;
+    width: 100%;
+    text-align: left;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+}
+
+.select-option.selected {
+    background-color: #656a88;
+}
+
+.select-option:hover {
+    background-color: rgba(101, 106, 136, 0.383);
+}
+
+.select-option:focus {
+    border-color: var(--input-secondary-color);
+}
+
+.select-element-input {
+    position: absolute;
+    opacity: 0;
+    height: 1px;
+    width: 1px;
+    pointer-events: none;
+    top: 80%;
+    left: 50%;
+}
+
